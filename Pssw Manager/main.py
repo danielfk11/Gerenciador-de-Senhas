@@ -34,6 +34,7 @@ def menu():
     print(' *2* listar os services salvos')
     print(' *3* para recuperar sua senha')
     print(' *4* para gerar uma nova senha')
+    print(' *5* para apagar algum servico')    
     print(' *0* para fechar o menu')
     print('-----------------------------------------')
 
@@ -41,6 +42,11 @@ def menu():
 def peg_senha(service):
     pass
 
+def apagar_service(service):
+    cursor.execute(f'''
+        DELETE FROM users 
+        WHERE service = '{service}'
+    ''')
 
 def mostrar_senha(service):
     cursor.execute(f'''
@@ -71,7 +77,7 @@ def mostrar_servicos():
 while True:
     menu()
     selecionar = input("Selecione um numero para continuar: ")
-    if selecionar not in ['1', '2', '3','4', '0']:
+    if selecionar not in ['1', '2', '3','4','5', '0']:
         print("Selecione apenas numeros validos.")
         continue
 
@@ -98,5 +104,9 @@ while True:
         l_senhas = 12
         for x in range(n_senhas):
             senha_criada = print(''.join(random.choice(string.ascii_letters + string.digits) for _ in range(l_senhas)))
+
+    if selecionar == '5':
+        service_delete = input("Qual servico voce deseja apagar? ")
+        apagar_service(service_delete)
 
 connect.close()
