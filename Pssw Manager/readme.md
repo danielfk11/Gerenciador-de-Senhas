@@ -29,3 +29,7 @@ ao digitar 4 ele gera uma senha aleatoria com letras e numeros<br>
 ao digitar 0 ele fecha o sistema
 
 
+
+
+https://user-images.githubusercontent.com/86691253/175852981-fd95ad33-7182-45fa-8e79-52d06fbb69a7.mp4
+
