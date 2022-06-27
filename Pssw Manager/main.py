@@ -1,4 +1,6 @@
 import sqlite3
+import string
+import random
 
 senha_admin = 'admin123' # ALTERAVEL
 
@@ -31,12 +33,14 @@ def menu():
     print(' *1* para inserir uma nova senha')
     print(' *2* listar os services salvos')
     print(' *3* para recuperar sua senha')
+    print(' *4* para gerar uma nova senha')
     print(' *0* para fechar o menu')
     print('-----------------------------------------')
 
 
 def peg_senha(service):
     pass
+
 
 def mostrar_senha(service):
     cursor.execute(f'''
@@ -67,7 +71,7 @@ def mostrar_servicos():
 while True:
     menu()
     selecionar = input("Selecione um numero para continuar: ")
-    if selecionar not in ['1', '2', '3', '0']:
+    if selecionar not in ['1', '2', '3','4', '0']:
         print("Selecione apenas numeros validos.")
         continue
 
@@ -87,5 +91,12 @@ while True:
     if selecionar == '3':
         service = input("Qual servico voce deseja ver a senha? ")
         mostrar_senha(service)
+    
+    if selecionar == '4':
+        print('Gerando uma senha..')
+        n_senhas = 1
+        l_senhas = 12
+        for x in range(n_senhas):
+            senha_criada = print(''.join(random.choice(string.ascii_letters + string.digits) for _ in range(l_senhas)))
 
 connect.close()
