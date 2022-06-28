@@ -35,12 +35,25 @@ def menu():
     print(' *3* para recuperar sua senha')
     print(' *4* para gerar uma nova senha')
     print(' *5* para apagar algum servico')    
+    print(' *6* para trocar uma senha ou username')
     print(' *0* para fechar o menu')
     print('-----------------------------------------')
 
 
 def peg_senha(service):
     pass
+
+def trocar_username(username):
+    cursor.execute(f'''
+        UPDATE users
+        SET username = '{username}'
+    ''')
+
+def trocar_password(password):
+    cursor.execute(f'''
+        UPDATE users
+        SET password = '{password}'
+            ''')
 
 def apagar_service(service):
     cursor.execute(f'''
@@ -58,7 +71,7 @@ def mostrar_senha(service):
         print("Servico nao encotrado, verifique o nome digitado.")
     else:
         for user in cursor.fetchall():
-            print(user)
+            print(user) 
 
 def nova_senha(service, username, password):
     cursor.execute(f'''
@@ -74,10 +87,12 @@ def mostrar_servicos():
     for service in cursor.fetchall():
         print(service)
 
+lista = ['email', 'youtube','teste']
+
 while True:
     menu()
     selecionar = input("Selecione um numero para continuar: ")
-    if selecionar not in ['1', '2', '3','4','5', '0']:
+    if selecionar not in ['1', '2', '3','4','5','6', '0']:
         print("Selecione apenas numeros validos.")
         continue
 
@@ -90,6 +105,7 @@ while True:
         username = input("Qual o nome de usuario? ")
         password = input("Qual a senha? ")
         nova_senha(service, username, password)
+        lista.append(service)
 
     if selecionar == '2':
         mostrar_servicos()
@@ -109,4 +125,25 @@ while True:
         service_delete = input("Qual servico voce deseja apagar? ")
         apagar_service(service_delete)
 
+    if selecionar == '6':                                                              
+        service_select = input("Qual servico voce deseja trocar? ")
+        if service_select not in lista:
+            print('Selecione um servico valido')
+        else:
+            print('-----------------------------------------')
+            service_troc = input('*1* Para trocar o username \n*2* Para trocar a senha\n ')
+            print('-----------------------------------------')
+
+            if service_troc == '1':
+                username_new = input("Qual o novo username? ")
+                trocar_username(username_new)
+
+            if service_troc == '2':
+                pssw_new = input("Qua a nova senha? ")
+                trocar_password(pssw_new)
+
+
 connect.close()
+
+
+
