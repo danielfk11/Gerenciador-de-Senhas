@@ -124,6 +124,7 @@ while True:
     if selecionar == '5':
         service_delete = input("Qual servico voce deseja apagar? ")
         apagar_service(service_delete)
+        lista.remove(service_delete)
 
     if selecionar == '6':                                                              
         service_select = input("Qual servico voce deseja trocar? ")
