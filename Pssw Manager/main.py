@@ -87,7 +87,7 @@ def mostrar_servicos():
     for service in cursor.fetchall():
         print(service)
 
-lista = ['email', 'youtube','teste']
+lista = []
 
 while True:
     menu()
