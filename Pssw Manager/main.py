@@ -87,7 +87,7 @@ def mostrar_servicos():
     for service in cursor.fetchall():
         print(service)
 
-lista = []
+lista = ['email', 'youtube','teste']
 
 while True:
     menu()
@@ -125,6 +125,8 @@ while True:
         service_delete = input("Qual servico voce deseja apagar? ")
         apagar_service(service_delete)
         lista.remove(service_delete)
+        if service_delete not in lista:
+            print("Selecione um servico valido")
 
     if selecionar == '6':                                                              
         service_select = input("Qual servico voce deseja trocar? ")
@@ -142,7 +144,6 @@ while True:
             if service_troc == '2':
                 pssw_new = input("Qua a nova senha? ")
                 trocar_password(pssw_new)
-
 
 connect.close()
 
