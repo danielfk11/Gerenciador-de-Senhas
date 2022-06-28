@@ -21,6 +21,7 @@ Como funciona?
     *3* para recuperar sua senha
     *4* para gerar uma nova senha
     *5* para excluir algum servico
+    *6* para trocar o username ou senha de algum servico
     *0* para fechar o menu
 
 ao digitar 1 ele pergunta o servico, seu username e sua senha <br>
@@ -28,6 +29,7 @@ ao digitar 2 ele mostra os servicos que voce salvou seu username e sua senha<br>
 ao digitar 3 voce busca o servico pelo nome salvo e ele informa sua senha <br>
 ao digitar 4 ele gera uma senha aleatoria com letras e numeros<br>
 ao digitar 5 ele deleta um servico escolhido<br>
+ao digitar 6 voce tem a opcao de trocar a senha ou usuario do servico selecionado posteriormente<br>
 ao digitar 0 ele fecha o sistema
 
 
